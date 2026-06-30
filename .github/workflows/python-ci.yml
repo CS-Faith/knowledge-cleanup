@@ -1,0 +1,60 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Test basic functionality
+      run: |
+        python -c "import os; print('Python import test passed')"
+        python -c "import hashlib; print('Hashlib import test passed')"
+        python -c "import shutil; print('Shutil import test passed')"
+
+    - name: Test script syntax
+      run: |
+        python -m py_compile run_cleanup.py
+        echo "Script syntax is valid"
+
+    - name: Run basic test
+      run: |
+        # Create test directories
+        mkdir -p test_source test_target
+        echo "Test file content" > test_source/test1.txt
+        echo "Test file content" > test_source/test2.txt
+        
+        # Run the cleanup script
+        python run_cleanup.py test_source test_target <<< "n"
+        
+        # Verify basic functionality
+        if [ -f test_target/清理报告_R1_MD5完全重复.md ]; then
+          echo "Basic test passed - Round 1 report generated"
+        else
+          echo "Basic test failed - Round 1 report not found"
+          exit 1
+        fi
+
+    - name: Clean up test files
+      run: |
+        rm -rf test_source test_target

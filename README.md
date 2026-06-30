@@ -1,105 +1,61 @@
 # knowledge-cleanup
 
-知识库文件查重与整理工具 — 五轮递进式自动清理。
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Stars](https://img.shields.io/github/stars/CS-Faith/knowledge-cleanup?style=social)](https://github.com/CS-Faith/knowledge-cleanup/stargazers)
+[![Reasonix Skill](https://img.shields.io/badge/Reasonix-Skill-green)](https://github.com/CS-Faith/knowledge-cleanup)
 
-## 做什么
+**AI-Powered Knowledge Base Cleanup Skill**
 
-给定一个堆积了大量工作文件的目录，自动完成：
+A 5-step progressive cleanup AI Skill for intelligent knowledge base organization. Built for AI agents (Reasonix, Claude Code, AutoGen, LangChain) and developers.
 
-| 轮次 | 操作 | 说明 |
-|------|------|------|
-| R1 | MD5 完全重复 | 字节级相同文件去重 |
-| R2 | 文件名相似度 | 识别显式版本链（V1→V2→V3…） |
-| R3 | 激进归一化 | 自动发现遗漏的隐式版本 |
-| R4 | 压缩包检测 | 已解压的压缩包安全删除 |
-| R5 | 目录重组 | 项目/管理二层结构建议 |
+## 🎯 Key Features
 
-## 为什么需要
+### 5-Round Progressive Cleanup Algorithm
+| Round | Operation | Description |
+|-------|-----------|-------------|
+| **R1** | MD5 Exact Duplicates | Byte-level duplicate file removal |
+| **R2** | Filename Similarity | Version chain detection (V1→V2→V3...) |
+| **R3** | Aggressive Normalization | Automatic implicit version discovery |
+| **R4** | Archive Detection | Safe removal of extracted archives |
+| **R5** | Directory Reorganization | Project/Management two-tier structure |
 
-- 工作文件堆积数年后，成千上万的文件散落在嵌套目录中
-- 同一文档存在 V1 / V2 / 最终版 / 修正版 / 最新版 / 副本 等十几个版本
-- 压缩包解压后原文件没删，占用双倍空间
-- 项目和管理的文件混在一起，找东西困难
+### Core Capabilities
+- 🔍 Intelligent Detection: Semantic analysis for file versioning patterns
+- 🛡️ Safe Operations: Read-only source, backup before every modification
+- 📊 Detailed Reporting: Comprehensive cleanup reports for each round
+- 🔄 Rollback Support: Full rollback capability for each round
+- 🤖 AI Agent Integration: Native Reasonix Skill support
+- 🚀 Cross-Platform: Works on Windows, macOS, and Linux
 
-**实测效果**：一次典型清理中，9,676 文件 → 7,579 文件（-21.7%），释放约 2GB。
-
-## 快速开始
+## 🚀 Quick Start
 
 ```bash
-python run_cleanup.py <源目录> <结果目录>
+git clone https://github.com/CS-Faith/knowledge-cleanup.git
+cd knowledge-cleanup
+python run_cleanup.py <source_directory> <target_directory>
 ```
 
-示例：
-```bash
-python run_cleanup.py D:\原始材料 D:\整理后
-```
+## 📊 Performance
+- **9,676 files → 7,579 files** (-21.7% cleanup rate)
+- **~2GB space freed** in typical cleanup
+- **Safe execution** with user confirmation at each step
 
-**安全保证**：
-- 源目录**只读**，不做任何修改
-- 所有删除操作在结果目录中进行
-- 删除前自动备份到 `_backup/round{N}/`
-- 每轮结束后暂停，等待你确认再继续
-- 支持回滚（输入 `r` 恢复本轮操作）
+## 🤖 AI Framework Integration
+- **Reasonix**: Native Skill support with `/skill knowledge-cleanup`
+- **Claude Code**: Direct execution support
+- **AutoGen**: Tool integration for AI agents
+- **LangChain**: Compatible as a LangChain tool
 
-## 交互流程
+## 🛡️ Safety Features
+- Automatic backups before every modification
+- Full rollback capability for each round
+- Source directory is **read-only** - never modified
+- All operations happen in target directory only
 
-```
-$ python run_cleanup.py D:\原始材料 D:\结果
+## 📜 License
+MIT License - see the [LICENSE](LICENSE) file for details.
 
-📋 正在复制源目录到结果目录...
-   复制完成。
-
-🔍 第1轮：MD5 完全重复检测
-   扫描: 9676 文件 | 重复: 45 组
-📄 报告: 清理报告_R1_MD5完全重复.md
-
-⏸️  第1轮（MD5完全重复）完成。
-   输入 y 继续，n 终止，r 回滚: y
-
-🔍 第2轮：文件名相似度版本链
-   ...
-
-⏸️  第5轮（目录结构重组）完成。
-
-📄 生成综合清理报告...
-   ✅ 综合清理报告.md
-```
-
-## 输出文件
-
-完成后结果目录下生成：
-
-```
-结果目录/
-├── 清理报告_R1_MD5完全重复.md       ← 各轮明细
-├── 清理报告_R2_文件名相似度版本链.md
-├── 清理报告_R3_激进版文件名归一化.md
-├── 清理报告_R4_压缩包检测.md
-├── 清理报告_R5_目录结构重组.md
-├── 综合清理报告.md                   ← 汇总报告
-├── _backup/                          ← 备份（确认后可删除）
-└── (整理后的文件)
-```
-
-## 核心判据
-
-脚本第 5 轮（目录重组）提供分类建议，Agent 根据以下抽象判据设计具体方案：
-
-| 分类 | 判据 |
-|------|------|
-| **项目** | 服务于特定交付物的完整工作集：系统设计、技术规格、需求文档、测试方案、外部合作项目 |
-| **管理** | 跨项目的重复性管理产物：工作计划与周报、绩效考核、资质申报、业务分析、竞对研究 |
-| **其他** | 无法归类的零散文件 |
-
-## 作为 Reasonix Skill 使用
-
-在 Reasonix Code 中可以通过 `/skill knowledge-cleanup` 加载，Skill 会引导 Agent 按五轮流程执行整理任务。
-
-## 依赖
-
-- Python 3.8+
-- 标准库（os, re, hashlib, shutil, zipfile, collections）
-
-## License
-
-MIT
+## 📞 Contact
+- **GitHub**: [CS-Faith](https://github.com/CS-Faith)
+- **Repository**: [knowledge-cleanup](https://github.com/CS-Faith/knowledge-cleanup)

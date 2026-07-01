@@ -59,3 +59,15 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 ## 📞 Contact
 - **GitHub**: [CS-Faith](https://github.com/CS-Faith)
 - **Repository**: [knowledge-cleanup](https://github.com/CS-Faith/knowledge-cleanup)
+
+
+---
+
+## 🔗 相关项目
+
+| 项目 | 描述 | 链接 |
+|------|------|------|
+| **reasonix-portakit** | 便携工具箱 | [CS-Faith/reasonix-portakit](https://github.com/CS-Faith/reasonix-portakit) |
+| **reasonix-migration-assistant** | 配置迁移升级助手 | [CS-Faith/reasonix-migration-assistant](https://github.com/CS-Faith/reasonix-migration-assistant) |
+| **llm-wiki-pipeline** | 知识库构建流水线 | [CS-Faith/llm-wiki-pipeline](https://github.com/CS-Faith/llm-wiki-pipeline) |
+

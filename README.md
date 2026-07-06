@@ -71,6 +71,8 @@ MIT License - see the [LICENSE](LICENSE) file for details.
 
 Cleaned your knowledge base? Build a structured Obsidian knowledge graph with [llm-wiki-pipeline](https://github.com/CS-Faith/llm-wiki-pipeline).
 
+See [OUTPUT_FORMAT.md](OUTPUT_FORMAT.md) for the technical integration spec.
+
 ---
 
 ## 🔗 相关项目

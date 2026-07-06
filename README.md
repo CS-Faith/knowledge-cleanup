@@ -1,5 +1,7 @@
 # knowledge-cleanup
 
+> **10,000 AI-generated notes shouldn't slow you down.** knowledge-cleanup removes duplicates, version chains, and directory chaos in 5 progressive rounds — with full rollback and zero source modification.
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Stars](https://img.shields.io/github/stars/CS-Faith/knowledge-cleanup?style=social)](https://github.com/CS-Faith/knowledge-cleanup/stargazers)

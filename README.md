@@ -1,5 +1,7 @@
 # knowledge-cleanup
 
+> 10,000+ AI 生成的笔记不应该成为你的负担。knowledge-cleanup 通过 5 轮递进式清理，去除重复文件、版本链和目录混乱 —— 完整回滚保证，源文件零修改。
+
 > **10,000 AI-generated notes shouldn't slow you down.** knowledge-cleanup removes duplicates, version chains, and directory chaos in 5 progressive rounds — with full rollback and zero source modification.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

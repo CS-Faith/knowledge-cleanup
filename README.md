@@ -1,6 +1,6 @@
 ﻿# Knowledge Cleanup - 知识库去重
 
-> 你在 Obsidian / Notion 里攒了 847 篇笔记，其中 613 篇是重复或近似重复。每次搜索都看到 10 条相同结果——但不知道该信哪条。
+> 查重不心慌。五轮递进，你不点头绝不删——专治文件囤积症。
 > Knowledge Cleanup 用五轮递进把 847 篇压缩到 211 篇 S/A 级知识原件。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

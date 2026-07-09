@@ -90,7 +90,7 @@ MIT © 2026 [CS-Faith](https://cs-faith.github.io)
 <details>
 <summary>English Version</summary>
 
-**Knowledge Cleanup** crushes 847 notes → 211 S/A knowledge units in five progressive rounds.
+**Knowledge Cleanup** — Dedup without the fear. Five progressive passes — nothing gets deleted unless you say so. File hoarding, cured.
 
 Your knowledge base has duplicates you can't find with simple tools. `fdupes` finds MD5-identical files. Knowledge Cleanup finds version chains, near-duplicates, and semantic overlap.
 
